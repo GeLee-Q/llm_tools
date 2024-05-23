@@ -1,11 +1,11 @@
 
 - [LLM 工具集使用指南](#llm-工具集使用指南)
   - [1. 下载 Hugging Face 模型](#1-下载-hugging-face-模型)
-  - [2. Hugging Face 模型结构与权重数据分析](#2-hugging-face-模型结构与权重数据分析)
-  - [3. 提取 Hugging Face 模型每层输入输出](#3-提取-hugging-face-模型每层输入输出)
-  - [4. TensorRT 权重转换阶段与 Hugging Face 模型对齐](#4-tensorrt-权重转换阶段与-hugging-face-模型对齐)
-  - [5. TensorRT 模型构建阶段与 Hugging Face 模型对齐](#5-tensorrt-模型构建阶段与-hugging-face-模型对齐)
-  - [6. TensorRT 推理阶段与 Hugging Face 模型对齐](#6-tensorrt-推理阶段与-hugging-face-模型对齐)
+  - [2. Hugging Face 模型结构与权重数据](#2-hugging-face-模型结构与权重数据)
+  - [3. Hugging Face 模型每层输入输出](#3-hugging-face-模型每层输入输出)
+  - [4. Tensorrt-LLM 权重转换阶段与 Hugging Face 模型对齐](#4-tensorrt-llm-权重转换阶段与-hugging-face-模型对齐)
+  - [5. Tensorrt-LLM 模型构建阶段与 Hugging Face 模型对齐](#5-tensorrt-llm-模型构建阶段与-hugging-face-模型对齐)
+  - [6. Tensorrt-LLM 推理阶段与 Hugging Face 模型对齐](#6-tensorrt-llm-推理阶段与-hugging-face-模型对齐)
 
 
 # LLM 工具集使用指南
@@ -30,12 +30,12 @@
 python llm_tools/download_model_hf.py 
 ```
 
-## 2. Hugging Face 模型结构与权重数据分析
+## 2. Hugging Face 模型结构与权重数据
 
 **状态:** 待完成
 
 
-## 3. 提取 Hugging Face 模型每层输入输出
+## 3. Hugging Face 模型每层输入输出
 
 **工具路径:** `llm_tools/llm_infer/torch_hf_precision/layer_hook_hf.py`
 
@@ -49,13 +49,13 @@ python llm_tools/download_model_hf.py
 - 该脚本利用 PyTorch 钩子机制，在模型推理过程中记录每层的输入和输出张量。
 - 用户需要指定目标模型和输入数据，脚本会返回每层的输入输出数据列表。
 
-## 4. TensorRT 权重转换阶段与 Hugging Face 模型对齐
+## 4. Tensorrt-LLM 权重转换阶段与 Hugging Face 模型对齐
 
 **工具路径:** `llm_tools/llm_infer/tensorrt_llm_precision/build_intern.py`
 
 **TensorRT-LLM 版本:** 0.7.1 (0.9.0 版本需要修改其他部分)
 
-**Tensorrt-llm 组网步骤:**
+**Tensorrt-LLM 组网步骤:**
 
 1. **权重处理:** 将 Hugging Face 模型的权重转换为 TensorRT-LLM 兼容的格式。
    -  TensorRT-LLM 定义了一系列模型结构，位于 `tensorrt_llm/models` 目录下。
@@ -63,13 +63,13 @@ python llm_tools/download_model_hf.py
 2. **模型构建:** 使用 TensorRT API 构建推理引擎。
    -  利用 TensorRT Builder 对象，将网络定义转换为可优化的推理引擎。
 
-## 5. TensorRT 模型构建阶段与 Hugging Face 模型对齐
+## 5. Tensorrt-LLM 模型构建阶段与 Hugging Face 模型对齐
 
 **状态:** 待完成
 
 
 
-## 6. TensorRT 推理阶段与 Hugging Face 模型对齐
+## 6. Tensorrt-LLM 推理阶段与 Hugging Face 模型对齐
 
 **状态:** 待完成
 
